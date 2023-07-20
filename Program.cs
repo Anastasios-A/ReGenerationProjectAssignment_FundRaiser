@@ -1,20 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using ReGenerationProjectAssignment_FundRaiser.DbContexts;
-//using Microsoft.Data.SqlClient;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// var myConn = "Server=AMD-FX6300\\SQLSERVER2019;Initial Catalog=Fund;" +
-//         "Integrated security=True;TrustServerCertificate=True;";
-var myConn =  "Server=tcp:regen-team1-server.database.windows.net,1433;Initial Catalog=RegenTeam1Db;Persist Security Info=False;" + 
-        "User ID=RegenTeam1Admin;Password=Qwerty123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" ;
-//using var connection = new SqlConnection(myConn);
 
 builder.Services.AddDbContext<CrmDbContext>(
-    options => options.UseSqlServer(myConn));
+    options => options.UseSqlServer(
+        builder.Configuration.GetConnectionString("AzureConnection")));
+         
 
 var app = builder.Build();
 
