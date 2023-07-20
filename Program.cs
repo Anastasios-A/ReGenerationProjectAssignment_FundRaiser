@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ReGenerationProjectAssignment_FundRaiser.DbContexts;
+using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
