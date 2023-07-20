@@ -10,6 +10,7 @@ builder.Services.AddControllersWithViews();
 //         "Integrated security=True;TrustServerCertificate=True;";
 var myConn =  "Server=tcp:regen-team1-server.database.windows.net,1433;Initial Catalog=RegenTeam1Db;Persist Security Info=False;" + 
         "User ID=RegenTeam1Admin;Password=Qwerty123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" ;
+using var connection = new SqlConnection(myConn);
 
 builder.Services.AddDbContext<CrmDbContext>(
     options => options.UseSqlServer(myConn));
